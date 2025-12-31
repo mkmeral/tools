@@ -658,10 +658,6 @@ def _load_tools_to_agent(params: Dict[str, Any]) -> Dict[str, Any]:
     if not agent:
         return {"status": "error", "content": [{"text": "agent instance is required for load_tools action"}]}
 
-    error_result = _validate_connection(connection_id, check_active=True)
-    if error_result:
-        return error_result
-
     # Check if agent has tool_registry
     if not hasattr(agent, "tool_registry") or not hasattr(agent.tool_registry, "register_tool"):
         return {
@@ -670,6 +666,11 @@ def _load_tools_to_agent(params: Dict[str, Any]) -> Dict[str, Any]:
                 {"text": "Agent does not have a tool registry. Make sure you're using a compatible Strands agent."}
             ],
         }
+
+
+    error_result = _validate_connection(connection_id, check_active=True)
+    if error_result:
+        return error_result
 
     try:
         config = _get_connection(connection_id)
