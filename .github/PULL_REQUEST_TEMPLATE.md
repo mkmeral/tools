@@ -14,8 +14,9 @@
 
 <!-- Choose one of the following types of changes, delete the rest -->
 
+> Please note that due to scalability concerns, we are not accepting new tools.
+
 Bug fix
-New Tool
 Breaking change
 Documentation update
 Other (please describe):
